@@ -1,0 +1,42 @@
+version: '3.5'
+
+services:
+  backend-auth:
+    container_name: backend-auth
+    image: auth
+    build:
+      context: ./auth/
+      dockerfile: Dockerfile
+    volumes:
+      - /data/auth
+    ports:
+      - "8080:8080"
+    # volumes:
+    # depends_on:
+
+  backend-video_streaming:
+    container_name: backend-video_streaming
+    image: video_streaming
+    build:
+      context: ./video_streaming/
+      dockerfile: Dockerfile
+    volumes:
+      - /data/video_streaming
+    ports:
+      - "8081:8081"
+    # volumes:
+    # depends_on:
+
+  backend-log:
+    container_name: backend-log
+    image: log
+    build:
+      context: ./log/
+      dockerfile: Dockerfile
+    volumes:
+      - /data/log
+    ports:
+      - "8082:8082"
+    # volumes:
+    # depends_on:
+  
